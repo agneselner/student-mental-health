@@ -2,6 +2,7 @@ import dbQuery from './libs/dbQuery.js'
 import drawGoogleChart from './libs/drawGoogleChart.js'
 
 async function init() {
+
   let data = await dbQuery(`
     SELECT Gender, COUNT(*) as total
     FROM students_raw
@@ -11,48 +12,23 @@ async function init() {
 
   const main = document.querySelector('main')
 
+  // 🔹 INTRO
   main.innerHTML = `
     <h1>Skillnader i depression mellan män och kvinnor</h1>
 
     <p>
-      Här jämförs hur många män respektive kvinnor i datan som har depression.
-    </p>
-
-    <div id="genderChart" style="width:100%; height:400px; margin:30px 0;"></div>
-
-    <h3>Delresultat i tabellform</h3>
-    <table border="1" cellpadding="8" style="border-collapse: collapse; margin-bottom: 30px;">
-      <thead>
-        <tr>
-          <th>Kön</th>
-          <th>Antal deprimerade</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${data.map(row => `
-          <tr>
-            <td>${row.Gender}</td>
-            <td>${row.total}</td>
-          </tr>
-        `).join('')}
-      </tbody>
-    </table>
-
-    <p>
-      Diagrammet visar att både män och kvinnor påverkas av depression, men att det finns
-      något fler män i datan som rapporterar depression. Skillnaden är dock inte extrem,
-      vilket tyder på att psykisk ohälsa är ett problem som berör båda könen.
-    </p>
-
-    <p>
-      Skillnaden kan bero på flera faktorer och behöver undersökas vidare.
-    </p>
-
-    <p>
-      För att förstå problemet bättre behöver vi även undersöka andra faktorer,
-      till exempel om andra variabler i studenternas vardag kan kopplas till depression.
+      För att börja analysen undersöker vi om det finns skillnader i depression mellan män och kvinnor.
+      Detta ger en första bild av hur psykisk ohälsa ser ut i datan.
     </p>
   `
+
+  // 🔹 DIAGRAM
+  const chartDiv = document.createElement('div')
+  chartDiv.id = 'genderChart'
+  chartDiv.style.width = '100%'
+  chartDiv.style.height = '400px'
+  chartDiv.style.margin = '30px 0'
+  main.appendChild(chartDiv)
 
   drawGoogleChart({
     htmlId: 'genderChart',
@@ -64,13 +40,40 @@ async function init() {
     options: {
       title: 'Depression per kön',
       hAxis: { title: 'Kön' },
-      vAxis: {
-        title: 'Antal deprimerade',
-        viewWindow: { min: 0 }
-      },
+      vAxis: { title: 'Antal deprimerade', viewWindow: { min: 0 } },
       legend: 'none'
     }
   })
+
+  // 🔹 TABELL + ANALYS
+  const analysis = document.createElement('div')
+  analysis.innerHTML = `
+    <h3>Delresultat</h3>
+
+    <table border="1" cellpadding="8" style="border-collapse: collapse; margin-bottom:20px;">
+      <tr>
+        <th>Kön</th>
+        <th>Antal deprimerade</th>
+      </tr>
+      ${data.map(row => `
+        <tr>
+          <td>${row.Gender}</td>
+          <td>${row.total}</td>
+        </tr>
+      `).join('')}
+    </table>
+
+    <p>
+      Diagrammet visar att både män och kvinnor påverkas av depression, med en något högre andel män i denna datamängd.
+      Skillnaden är dock inte särskilt stor, vilket tyder på att psykisk ohälsa är ett problem som berör studenter oavsett kön.
+    </p>
+
+    <p>
+      Detta innebär att kön i sig inte verkar vara den avgörande faktorn.
+      För att få en djupare förståelse behöver vi därför undersöka andra variabler.
+    </p>
+  `
+  main.appendChild(analysis)
 }
 
 init() 

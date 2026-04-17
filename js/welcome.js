@@ -5,7 +5,12 @@ document.querySelector('main').innerHTML = `
        style="width:100%; max-height:400px; object-fit:cover; border-radius:10px; margin-bottom:20px;">
 
   <p><em>
-    Psykisk ohälsa bland studenter är ett växande problem – men vilka faktorer påverkar mest?
+Psykisk ohälsa bland studenter har blivit ett allt mer uppmärksammat problem globalt.
+I denna analys undersöks en enkätstudie från studenter på universitetsnivå i Indien,
+där de själva fått ange om de upplever depression samt hur deras livssituation ser ut.
+
+Men vilka faktorer påverkar egentligen studenters psykiska mående mest?
+Är det studiebördan, stressnivåer, sömn eller andra delar av vardagen?
   </em></p>
 
   <p>
