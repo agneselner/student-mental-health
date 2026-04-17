@@ -95,16 +95,23 @@ async function init() {
     </div>
 
     <p>
-      Vi ser att andelen depression varierar mellan sömnkategorier. I de grupper som sover
-      mindre än 5 timmar per natt är andelen depression i den här datan ofta högre.
+      För att förstå sambandet mellan sömn och depression har vi analyserat hur andelen depression varierar mellan olika sömnkategorier.
+    </p>
+
+    <p>
+      Resultaten visar att studenter som sover mindre än 5 timmar per natt har en högre andel depression jämfört med de som sover 7–8 timmar.
     </p>
 
     <p>
       Pearsons korrelationskoefficient mellan uppskattad sömnlängd och andel depression är
       <strong>${formatNumber(pearsonR, 2)}</strong>, vilket tyder på ett relativt starkt negativt samband.
+    </p>
 
+    <p>
       Detta innebär att kortare sömn ofta hänger ihop med en högre andel depression i datan.
+    </p>
 
+    <p>
       Samtidigt är det viktigt att komma ihåg att detta endast visar ett samband och inte innebär att sömn direkt orsakar depression.
     </p>
 
