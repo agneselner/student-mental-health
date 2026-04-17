@@ -3,7 +3,7 @@ import drawGoogleChart from './libs/drawGoogleChart.js'
 
 async function init() {
 
-  // 1. Hämta data för diagram (genomsnitt per ålder)
+  // Hämta data för diagram
   let data = await dbQuery(`
     SELECT 
       Age, 
@@ -13,16 +13,28 @@ async function init() {
     ORDER BY Age
   `, 'students')
 
-  // 2. Hämta total medelstress (VG-krav)
-  let avgData = await dbQuery(`
-    SELECT 
-      AVG(CAST("Academic Pressure" AS FLOAT)) as avg_stress
+  // Hämta ALL stressdata (för median + std)
+  let rawData = await dbQuery(`
+    SELECT CAST("Academic Pressure" AS FLOAT) as stress
     FROM students_raw
   `, 'students')
 
-  let avgStress = Number(avgData[0].avg_stress).toFixed(2)
+  let stressValues = rawData.map(row => row.stress)
 
-  // 3. HTML
+  // 🔥 MEDELVÄRDE
+  let mean = stressValues.reduce((a, b) => a + b, 0) / stressValues.length
+
+  // 🔥 MEDIAN
+  let sorted = [...stressValues].sort((a, b) => a - b)
+  let mid = Math.floor(sorted.length / 2)
+  let median = sorted.length % 2 !== 0
+    ? sorted[mid]
+    : (sorted[mid - 1] + sorted[mid]) / 2
+
+  // 🔥 STANDARDAVVIKELSE
+  let variance = stressValues.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / stressValues.length
+  let stdDev = Math.sqrt(variance)
+
   document.querySelector('main').innerHTML = `
     <h1>Hur stress varierar med ålder</h1>
 
@@ -31,23 +43,24 @@ async function init() {
     </p>
 
     <p>
-      Genomsnittlig stressnivå i datan är: <strong>${avgStress}</strong>
+      Medelvärde: <strong>${mean.toFixed(2)}</strong> <br>
+      Median: <strong>${median.toFixed(2)}</strong> <br>
+      Standardavvikelse: <strong>${stdDev.toFixed(2)}</strong>
     </p>
 
     <div id="ageChart" style="width:100%; height:400px;"></div>
 
     <p>
-      Diagrammet visar att stressnivån varierar något mellan olika åldrar,
-      men utan några extremt stora skillnader.
+      Diagrammet visar att stressnivån varierar något mellan olika åldrar, men utan
+      några extremt stora skillnader.
     </p>
 
     <p>
-      Det verkar finnas ett svagt samband mellan ålder och stress,
-      men skillnaderna är inte tillräckligt stora för att dra en stark slutsats.
+      Det verkar finnas ett svagt samband mellan ålder och stress, men skillnaderna
+      är inte tillräckligt stora för att dra en stark slutsats.
     </p>
   `
 
-  // 4. Rita diagram
   drawGoogleChart({
     htmlId: 'ageChart',
     type: 'LineChart',
@@ -67,4 +80,4 @@ async function init() {
   })
 }
 
-init()
+init() 
