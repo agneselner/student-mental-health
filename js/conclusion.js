@@ -12,6 +12,8 @@ async function init() {
       Resultaten visar att både män och kvinnor påverkas av depression, med en något
       högre andel män i denna datamängd. Analysen av ålder och stress visar samtidigt
       att stress förekommer i flera olika åldersgrupper, utan några mycket stora skillnader.
+      Vi har också jämfört sömn och depression, och sett att kortare sömn ofta sammanfaller
+      med en högre andel depression i datan.
     </p>
 
     <p>

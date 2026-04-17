@@ -13,6 +13,7 @@ Projektet består av flera delar:
 - **Introduktion** – bakgrund och syfte med analysen  
 - **Kön & depression** – jämförelse mellan män och kvinnor  
 - **Ålder & stress** – hur stress varierar mellan olika åldrar  
+- **Sömn & depression** – samband mellan sömnvaraktighet och depression  
 - **Slutsats** – sammanfattning och reflektion  
 
 ---
@@ -48,6 +49,7 @@ Resultaten visar att:
 - Både män och kvinnor påverkas av depression, med en något högre andel män i denna datamängd  
 - Stressnivåer varierar mellan olika åldrar, men utan starka skillnader  
 - Det finns ett svagt samband mellan ålder och stress  
+- Sömnmönster påverkar andelen depression, där kortare sömn ofta sammanfaller med högre depressionsfrekvens  
 
 Det är viktigt att notera att **korrelation inte innebär kausalitet**, vilket betyder att vi inte kan fastställa orsakssamband utifrån denna analys.
 

@@ -12,7 +12,13 @@ function formatPercent(value) {
 async function init() {
   const data = await dbQuery(`
     SELECT 
-      "Sleep Duration" AS sleep_duration,
+      CASE "Sleep Duration"
+        WHEN 'Less than 5 hours' THEN 'Mindre än 5 timmar'
+        WHEN '5-6 hours' THEN '5-6 timmar'
+        WHEN '7-8 hours' THEN '7-8 timmar'
+        WHEN 'More than 8 hours' THEN 'Mer än 8 timmar'
+        ELSE "Sleep Duration"
+      END AS sleep_duration,
       SUM(CAST(Depression AS INTEGER)) AS depressed_count,
       COUNT(*) AS total_count,
       ROUND(100.0 * SUM(CAST(Depression AS INTEGER)) / COUNT(*), 1) AS depression_rate,
