@@ -124,9 +124,15 @@ async function init() {
     </p>
 
     <p>
-      Nollhypotesen är att "ålder och stress inte är korrelerade". Den här analysen
-      ger endast svagt stöd för att förkasta den, eftersom sambandet är svagt till
-      måttligt.
+    <p>
+ <p>
+  Nollhypotesen är att det inte finns något samband mellan ålder och stress.
+  Eftersom korrelationskoefficienten är <strong>${pearsonR.toFixed(2)}</strong>,
+  vilket visar ett ${correlationDescription}, kan vi inte förkasta nollhypotesen.
+  Det innebär att analysen inte visar något tydligt statistiskt samband mellan
+  ålder och stress i denna datamängd.
+</p>
+</p>
     </p>
   `
 

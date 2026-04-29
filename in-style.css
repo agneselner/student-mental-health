@@ -49,3 +49,67 @@ table {
 label.dropdown+label.dropdown {
   margin-top: -20px !important;
 }
+
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  background: #f4f6f8;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+h1 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+h2 {
+  margin-top: 35px;
+  color: #374151;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  background: white;
+}
+
+th {
+  background: #1f2937;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background: #f1f5f9;
+}
+
+nav,
+header {
+  background: #111827;
+  color: white;
+}
+
+a {
+  color: #2563eb;
+}

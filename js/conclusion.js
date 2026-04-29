@@ -8,35 +8,39 @@ document.querySelector('main').innerHTML = `
 
   <p>
     Resultaten visar att kön inte verkar ha någon avgörande betydelse för depression i denna datamängd.
-    Däremot framträder tydligare samband när man analyserar livsstilsfaktorer.
+    Däremot framträder tydligare samband när livsstilsfaktorer analyseras.
   </p>
 
   <p>
-    Stress och särskilt sömn visar starkare kopplingar till depression. Studenter som sover mindre
-    tenderar i större utsträckning att rapportera depression, vilket tyder på att återhämtning kan
-    spela en viktig roll för psykiskt välmående.
+    Sömn visar det starkaste sambandet med depression, följt av stress. Studenter som sover mindre
+    tenderar i större utsträckning att rapportera depression, vilket tyder på att återhämtning är
+    en viktig faktor för psykiskt välmående.
   </p>
 
   <p>
-    Analysen av studietid visar att det finns ett visst samband mellan hur mycket studenter arbetar
-    eller studerar och deras stressnivåer, men detta samband är inte lika starkt som för sömn.
-    Detta tyder på att stress inte enbart beror på antal timmar, utan även på andra faktorer.
+    Analysen av stress och studietid visar att det finns samband, men dessa är svagare.
+    Detta tyder på att stress inte enbart beror på hur många timmar studenter arbetar eller studerar,
+    utan även påverkas av andra faktorer.
   </p>
 
   <p>
     Sammantaget visar analysen att psykisk ohälsa bland studenter är ett komplext fenomen som
-    påverkas av flera olika faktorer samtidigt.
+    påverkas av flera faktorer samtidigt.
   </p>
 
   <p>
-    Det är viktigt att notera att analysen bygger på samband i data. Korrelation innebär inte
-    nödvändigtvis att det finns ett orsakssamband, vilket betyder att vi inte kan säga att en
-    enskild faktor direkt orsakar depression.
+    Det är viktigt att betona att analysen bygger på samband i data. Korrelation innebär inte
+    nödvändigtvis ett orsakssamband, vilket betyder att vi inte kan fastställa att en enskild faktor
+    direkt orsakar depression.
+  </p>
+
+  <p>
+    Resultaten visar att vissa samband är starkare än andra, vilket understryker vikten av att använda
+    statistiska metoder för att skilja mellan slumpmässiga variationer och verkliga samband.
   </p>
 
   <p>
     För framtida analyser skulle det vara intressant att undersöka fler variabler, såsom kost,
-    sociala faktorer eller studiemiljö, för att få en ännu djupare förståelse av studenters
-    psykiska mående.
+    sociala faktorer och studiemiljö, för att få en ännu djupare förståelse av studenters psykiska mående.
   </p>
-` 
+`; 
