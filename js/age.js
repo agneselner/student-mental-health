@@ -78,7 +78,10 @@ async function init() {
       I denna del av analysen undersöker vi hur studenternas upplevda akademiska stress
       varierar beroende på ålder.
     </p>
-
+<p>
+  I SQL-frågorna filtrerades rader bort där ålder eller akademisk stress saknade värden.
+  Det gjorde att analysen endast bygger på rader där båda variablerna finns med.
+</p>
     <p>
       Medelvärde: <strong>${mean.toFixed(2)}</strong><br>
       Median: <strong>${median.toFixed(2)}</strong><br>
@@ -123,14 +126,21 @@ async function init() {
       <strong>${pearsonR.toFixed(2)}</strong>, vilket indikerar ett ${correlationDescription}.
     </p>
 
-    <p>
-    <p>
- <p>
+  <h2>Nollhypotes</h2>
+
+<p>
   Nollhypotesen är att det inte finns något samband mellan ålder och stress.
+</p>
+
+<p>
   Eftersom korrelationskoefficienten är <strong>${pearsonR.toFixed(2)}</strong>,
   vilket visar ett ${correlationDescription}, kan vi inte förkasta nollhypotesen.
-  Det innebär att analysen inte visar något tydligt statistiskt samband mellan
-  ålder och stress i denna datamängd.
+  Det innebär att analysen inte visar något tydligt samband mellan ålder och stress
+  i denna datamängd.
+</p>
+</p>
+</p>
+</p>
 </p>
 </p>
     </p>

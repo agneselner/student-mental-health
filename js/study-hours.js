@@ -4,12 +4,15 @@ import drawGoogleChart from './libs/drawGoogleChart.js'
 async function init() {
 
   let rawData = await dbQuery(`
-    SELECT 
-      CAST("Work/Study Hours" AS FLOAT) as hours,
-      CAST("Academic Pressure" AS FLOAT) as stress
-    FROM students_raw
-    WHERE "Work/Study Hours" IS NOT NULL AND "Academic Pressure" IS NOT NULL
-  `, 'students')
+  SELECT 
+    CAST("Work/Study Hours" AS FLOAT) as hours,
+    CAST("Academic Pressure" AS FLOAT) as stress
+  FROM students_raw
+  WHERE "Work/Study Hours" IS NOT NULL 
+    AND "Work/Study Hours" != ''
+    AND "Academic Pressure" IS NOT NULL
+    AND "Academic Pressure" != ''
+`, 'students')
 
   let hours = rawData.map(row => row.hours)
   let stress = rawData.map(row => row.stress)
@@ -48,7 +51,10 @@ async function init() {
       I denna del undersöks hur antal timmar studenter arbetar eller studerar per dag
       hänger ihop med deras upplevda stressnivå.
     </p>
-
+<p>
+  I SQL-frågan filtrerades rader bort där studietid eller akademisk stress saknade värden.
+  Båda variablerna omvandlades också till numeriskt format med CAST för att kunna beräkna medelvärde och korrelation.
+</p> 
     <p>
       Medelvärde (stress): <strong>${mean.toFixed(2)}</strong><br>
       Korrelation (r): <strong>${correlation.toFixed(2)}</strong>
@@ -92,7 +98,7 @@ async function init() {
     </p>
 
     <p>
-      Detta innebär att studietid kan ha viss påverkan på stressnivåer,
+    Detta innebär att studietid verkar hänga ihop med stressnivåer, 
       men att sambandet inte är tillräckligt starkt för att vara den enda förklaringen.
     </p>
 
